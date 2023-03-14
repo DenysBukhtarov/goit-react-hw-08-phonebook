@@ -17,28 +17,27 @@ function ContactListItem({ name, number, id }) {
     }, [isSuccess, name, error]);
     
     return (
-        <li className={css.Contact} key={ id}>
-            <p>
-                {name}: {phone}
-            </p>
+        <Box key={id} mb="5">
+            <Flex alignItems="center" justifyContent="space-between" w="400px" mb="5">
+                {name}: {number}
             
-            <button
-                className={ css.Button}
-                    onClick={() => deleteContacts(id)}
-                disabled={ isDeleting}
-                    type="button"
+            <Button
+                onClick={() => deleteContacts(id)}
+                disabled={isDeleting}
+                type="button"
             >
                 { isDeleting ? 'Delete...' : 'Delete'}
-            </button>   
-        </li>
+            </Button>   
+        </Flex>
+        </Box>
     );
 }
  
 
 ContactListItem.propTypes = {
         name: PropTypes.string.isRequired,
-        phone: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
+        number: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
 };
 
 export default ContactListItem;
