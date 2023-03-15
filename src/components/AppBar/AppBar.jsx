@@ -1,4 +1,17 @@
 import React from "react";
 import Navigatin from './Navigation/Navigation';
 import UserMenu from './UserMenu/UserMenu';
-import { Box, Flex, useColorModeValue} from '@chakra-ui/react'
+import { Box, Flex, useColorModeValue} from '@chakra-ui/react';
+
+function AppBar(){
+    return (
+        <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+            <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+                <Navigatin />
+                <UserMenu />
+            </Flex>
+        </Box>
+    );
+}
+
+export default AppBar;
