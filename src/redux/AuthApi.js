@@ -31,8 +31,6 @@ export const AuthApi = createApi({
            method: 'POST',
            body: user,
         }),
-
-        
     }),
 
     userLogin: builder.mutation({
@@ -41,7 +39,6 @@ export const AuthApi = createApi({
            method: 'POST',
            body: user,
         }),
-
     }),
 
     userLogout: builder.mutation({

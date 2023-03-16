@@ -16,6 +16,7 @@ import {
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { Navigate, useNavigate, useLocation, NavLink } from 'react-router-dom';
+import { useUserSignupMutation } from 'redux/AuthApi';
 
 
 export default function SignupView() {
@@ -28,7 +29,7 @@ export default function SignupView() {
 
     const handleInputChange = ({ currentTarget: {name, value} }) => {
     switch (name) {
-        case 'name'
+        case 'name':
         setName(value);
         break;
         case 'email':
