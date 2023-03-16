@@ -13,7 +13,7 @@ import {toast} from 'react-toastify';
 import { useState, useEffect } from 'react';
 import { Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { useUserLoginMutation } from 'redux/AuthApi';
-import { set } from 'immer/dist/internal';
+
 
 export default function LoginView() {
     const [email, setEmail] = useState('');
@@ -68,9 +68,57 @@ return (
             <Box 
             as="form"
             rounded={'lg'}
+            bg={useColorModeValue('white', 'gray.700')}
+            boxShadow={'lg'}
+            p={8}
+            autoComplete="off"
+            onSubmit={handleSubmit}
+            >
+                <Stack spacing={4}>
+                    <FormControl id="email">
+                        <FormLabel>Email address</FormLabel>
+                        <Input 
+                        type="email"
+                        pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$"
+                        required
+                        onChange={handleInputChange}
+                        name="email"
+                        value={email}
+                        />
+                    </FormControl>
+                    <FormControl id="password">
+                        <FormLabel>Password</FormLabel>
+                        <Input 
+                        type="password"
+                        onChange={handleInputChange}
+                        name="password"
+                        value={password}
+                        />
+                    </FormControl>
+                    <Stack spacing={10}>
+<Button 
+disabled={email && password ? false : true}
+type="submit"
+bg={'blue.400'}
+color={'white'}
+_hover={{bg: 'blue.500',}}
+>
+    Sign in
+</Button>
+<Stack 
+direction={{ base: 'column', sm: 'row'}}
+align={'start'}
+justify={'center'}
+>
+    <Button type="button" onClick={goBack}>
+        goBack
+    </Button>
+</Stack>
+                    </Stack>
+                </Stack>
+            </Box>
         </Stack>
     </Flex>
-)
-
- }
+);
+}
 }
