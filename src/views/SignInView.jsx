@@ -45,8 +45,8 @@ const handleSubmit = e => {
     setEmail('');
     setPassword('');
 
-    let navigate = useNavigate();
-    let location = useLocation();
+    let navigate = Navigate();
+    let location = Location();
 
     const goBack = () => {
         navigate(location?.state?.from || '/');

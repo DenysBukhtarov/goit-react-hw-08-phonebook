@@ -22,9 +22,6 @@ export const AuthApi = createApi({
             query: () => '/users/current',
         }),
 
-        
-    }),
-
     userSignup: builder.mutation({
         query: user => ({
            url: '/users/signup',
@@ -47,7 +44,8 @@ export const AuthApi = createApi({
            method: 'POST',
         }),
     }),
-});
+}),
+})
 
 export const {
     useGetCurrentUserQuery,

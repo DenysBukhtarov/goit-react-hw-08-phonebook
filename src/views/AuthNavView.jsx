@@ -4,7 +4,7 @@ import {
     Button,
     Text,
     VStack,
-    userBreakpointValue,
+    useBreakpointValue,
 } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ export default function WithBackgroubdImage() {
             <VStack 
             w={'full'}
             justify={'center'}
-            px={userBreakpointValue({base: 4, md: 8})}
+            px={useBreakpointValue({base: 4, md: 8})}
             bgGradient={'linear(to-r, blackAlpha.600, transparent)'}
             >
 
@@ -31,7 +31,7 @@ export default function WithBackgroubdImage() {
     color={'white'}
     fontWeight={700}
     lineHeight={1.2}
-    fontSize={userBreakpointValue({base: '3x1', md: '4x1'})}
+    fontSize={useBreakpointValue({base: '3x1', md: '4x1'})}
     >
         Welcome to the phonebook to take advantage of all the features,
         register or login.
