@@ -13,17 +13,13 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+
 
 import {ContactsApi} from './ContactsApi';
 import {AuthApi} from './AuthApi';
 import {FilterSlice} from './FilterSlice';
 
-const authPersistConfig = {
-    key: 'auth',
-    storage: storage,
-    whitelist: ['token'],
-};
+
 
 export const store = configureStore({
     reducer: {

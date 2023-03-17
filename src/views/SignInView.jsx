@@ -57,7 +57,7 @@ return (
     minH={'100vh'}
     align={'center'}
     justify={'center'}
-    bg={handleSubmit ('grey.50', 'grey.800')}
+    bg={useColorModeValue('grey.50', 'grey.800')}
     >
         {isSuccess && <Navigate to="/contacts" replace={true} />}
 
@@ -68,7 +68,7 @@ return (
             <Box 
             as="form"
             rounded={'lg'}
-            bg={handleSubmit ('white', 'gray.700')}
+            bg={useColorModeValue('white', 'gray.700')}
             boxShadow={'lg'}
             p={8}
             autoComplete="off"
