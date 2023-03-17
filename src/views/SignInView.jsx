@@ -52,6 +52,17 @@ const handleSubmit = e => {
         navigate(location?.state?.from || '/');
     };
 
+
+// Here's the signature
+const value = useColorModeValue(lightModeValue, darkModeValue)
+
+function StyleColorMode() {
+    const { toggleColorMode } = useColorMode()
+  
+    const bg = useColorModeValue('red.500', 'red.200')
+    const color = useColorModeValue('white', 'gray.800')
+
+
 return (
     <Flex 
     minH={'100vh'}
