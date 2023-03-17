@@ -7,7 +7,7 @@ import{
     Stack,
     Button,
     Heading,
-    ColorModeValue,
+    useColorModeValue,
 } from '@chakra-ui/react';
 import {toast} from 'react-toastify';
 import { useState, useEffect } from 'react';
@@ -57,7 +57,7 @@ return (
     minH={'100vh'}
     align={'center'}
     justify={'center'}
-    bg={ColorModeValue('grey.50', 'grey.800')}
+    bg={useColorModeValue('grey.50', 'grey.800')}
     >
         {isSuccess && <Navigate to="/contacts" replace={true} />}
 
@@ -68,7 +68,7 @@ return (
             <Box 
             as="form"
             rounded={'lg'}
-            bg={ColorModeValue('white', 'gray.700')}
+            bg={useColorModeValue('white', 'gray.700')}
             boxShadow={'lg'}
             p={8}
             autoComplete="off"
