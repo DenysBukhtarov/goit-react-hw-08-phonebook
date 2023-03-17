@@ -18,8 +18,6 @@ import storage from 'redux-persist/lib/storage';
 import {ContactsApi} from './ContactsApi';
 import {AuthApi} from './AuthApi';
 import {FilterSlice} from './FilterSlice';
-import {AuthSlice} from './AuthSlice';
-import { getDefaultNormalizer } from '@testing-library/react';
 
 const authPersistConfig = {
     key: 'auth',

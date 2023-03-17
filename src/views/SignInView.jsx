@@ -11,7 +11,7 @@ import{
 } from '@chakra-ui/react';
 import {toast} from 'react-toastify';
 import { useState, useEffect } from 'react';
-import { Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useUserLoginMutation } from 'redux/AuthApi';
 
 
