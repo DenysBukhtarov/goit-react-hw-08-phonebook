@@ -4,7 +4,7 @@ import {
     useGetContactQuery
 } from '../../redux/ContactsApi';
 import { toast } from 'react-toastify';
-import { Stack, Input, Button } from "@chakra-ui/react";
+import { Stack, Button } from "@chakra-ui/react";
 
 function ContactForm() {
     const [addContacts, { isLoading, isSuccess, error }] =
