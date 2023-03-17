@@ -7,7 +7,6 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { getToken } from 'redux/AuthSlice';
 import {useGetCurrentUserQuery} from 'redux/AuthApi';
 import { useSelector } from 'react-redux';
-import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 
 const Layout = lazy(() => import ('components/Layout'));
