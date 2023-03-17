@@ -7,7 +7,7 @@ import{
     Stack,
     Button,
     Heading,
-    useColorModeValue,
+    /*UseColorModeValue,*/
 } from '@chakra-ui/react';
 import {toast} from 'react-toastify';
 import { useState, useEffect } from 'react';
@@ -18,7 +18,7 @@ import { useUserLoginMutation } from 'redux/AuthApi';
 export default function LoginView() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [userLogin, {isSuccess, isError}] = useUserLoginMutation();
+    const [{isSuccess, isError}] = useUserLoginMutation();
     useEffect(() => {
         isError && toast.error('Invalid email or password');
 }, [isSuccess, isError]);
@@ -36,31 +36,6 @@ const handleInputChange = ({ currentTarget: {name, value} }) => {
     }
 };
 
-const handleSubmit = e => {
-    e.preventDefault();
-    userLogin({
-        email: email,
-        password: password,
-    });
-    setEmail('');
-    setPassword('');
-
-    let navigate = Navigate();
-    let location = Location();
-
-    const goBack = () => {
-        navigate(location?.state?.from || '/');
-    };
-
-
-// Here's the signature
-const value = useColorModeValue(lightModeValue, darkModeValue)
-
-function StyleColorMode() {
-    const { toggleColorMode } = useColorMode()
-  
-    const bg = useColorModeValue('red.500', 'red.200')
-    const color = useColorModeValue('white', 'gray.800')
 
 
 return (
@@ -68,7 +43,7 @@ return (
     minH={'100vh'}
     align={'center'}
     justify={'center'}
-    bg={useColorModeValue('grey.50', 'grey.800')}
+    bg={/*useColorModeValue*/('grey.50', 'grey.800')}
     >
         {isSuccess && <Navigate to="/contacts" replace={true} />}
 
@@ -79,11 +54,10 @@ return (
             <Box 
             as="form"
             rounded={'lg'}
-            bg={useColorModeValue('white', 'gray.700')}
+            bg={/*useColorModeValue*/('white', 'gray.700')}
             boxShadow={'lg'}
             p={8}
             autoComplete="off"
-            onSubmit={handleSubmit}
             >
                 <Stack spacing={4}>
                     <FormControl id="email">
@@ -121,7 +95,7 @@ direction={{ base: 'column', sm: 'row'}}
 align={'start'}
 justify={'center'}
 >
-    <Button type="button" onClick={goBack}>
+    <Button type="button" >
         goBack
     </Button>
 </Stack>
@@ -131,5 +105,4 @@ justify={'center'}
         </Stack>
     </Flex>
 );
-}
 }
