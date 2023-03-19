@@ -1,27 +1,30 @@
-import {lazy, Suspense } from 'react';
-import { Box } from '@chakra-ui/react';
-import 'react-toastify/dist/ReactToastify.css';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import { ChakraProvider } from '@chakra-ui/react';
-import { getToken } from 'redux/AuthSlice';
-import {useGetCurrentUserQuery} from 'redux/AuthApi';
-import { useSelector } from 'react-redux';
-import PublicRoute from 'components/RestrictedRoute';
-
-const Layout = lazy(() => import ('components/Layout'));
-const AuthNavView= lazy(() => import ('views/AuthNavView'));
-const SignUpView = lazy(() => import ('views/SignUpView'));
-const SignInView = lazy(() => import ('views/SignInView'));
-const ContactsView = lazy(() => import ('views/AuthNavView'));
+import { useEffect, lazy } from "react";
+import { useDispatch } from "react-redux";
+import { Route, Routes } from "react-router-dom";
+import { Layout } from "./Layout";
+import { PrivateRoute } from "./PrivateRoute";
+import {RestrictedRoute} from './RestrictedRoute';
+import { refreshUser } from "redux/auth/operations";
+import { useAuth } from "redux/hooks";
 
 
-function App(){
+const Homepage = lazy(()) => import('../pages/Home');
+const RegisterPage = lazy(()) => import('../pages/Register');
+const LoginPage = lazy(()) => import('../pages/Login');
+const ContactsPage = lazy(()) => import('../pages/Contacts');
 
-  const token = useSelector(getToken);
-  useGetCurrentUserQuery(null, {skip: !token });
+
+export const App = () => {
+
+  const dispatch = useDispatch();
+  const {isRefreshing} = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
    
-  return(
+  return isRefreshing ? (
 <Box>
   <Suspense>
    <ChakraProvider>
