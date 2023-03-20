@@ -8,10 +8,10 @@ import { refreshUser } from "redux/auth/operations";
 import { useAuth } from "redux/hooks";
 
 
-const Homepage = lazy(()) => import('../pages/Home');
-const RegisterPage = lazy(()) => import('../pages/Register');
-const LoginPage = lazy(()) => import('../pages/Login');
-const ContactsPage = lazy(()) => import('../pages/Contacts');
+const Homepage = lazy(() => import('../pages/Home'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 
 export const App = () => {
@@ -25,62 +25,31 @@ export const App = () => {
 
    
   return isRefreshing ? (
-<Box>
-  <Suspense>
-   <ChakraProvider>
+    <b>Refreshing user...</b>
+  ) : (
+
 <Routes>
   <Route path="/" element={<Layout />}>
-    <Route 
-    index
-    element={
-      <PublicRoute restricted>
-      <AuthNavView />
-      </PublicRoute>
-    }
-    />
-    
+    <Route index element={<Homepage />} />
     <Route 
     path="/register"
     element={
-      <PublicRoute restricted>
-      <SignUpView />
-      </PublicRoute>
+      <RestrictedRoute 
+      redirectTo="/contacts"
+      component={<RegisterPage />} />
     }
     />
 
-<Route 
-    path="/login"
-    element={
-      <PublicRoute restricted>
-      <SignInView />
-      </PublicRoute>
-    }
-    />
+<Route path="/login" element={
+      <RestrictedRoute redirectTo="/contacts"component={<LoginPage />} /> } />
 
 <Route 
     path="/contacts"
     element={
-      <PublicRoute restricted>
-      <ContactsView />
-      </PublicRoute>
-    }
-    />
+      <PrivateRoute redirectTo="/login" component={<ContactsPage />} /> } />
 
-    <Route path="*" element={<Navigate to="/" />} />
+    <Route path="*" element={<Homepage />} />
   </Route>
 </Routes>
-
-
-    <ToastContainer
-    autoClose={2000}
-    position="top-right"
-    hideProgressBar={true}
-    />
-   </ChakraProvider>
-  </Suspense>
-</Box>
-  );
-
-}
-
-export default App;
+  )
+};
