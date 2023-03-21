@@ -3,7 +3,7 @@ import { register } from "redux/auth/operations";
 import {Form, Label, Input, Button } from './RegisterForm.styled';
 
 
-export const RegisterFrom = () => {
+export const RegisterForm = () => {
     const dispatch = useDispatch();
 
     const handleSubmit = e => {

@@ -1,5 +1,5 @@
 import { Title } from "./Section.styled";
-export const Sectiom = ({title, children}) => {
+export const Section = ({title, children}) => {
     return (
         <sectiom>
             <Title>{title}</Title>

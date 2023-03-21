@@ -1,4 +1,4 @@
-import {Section} from '../components/Section/Section';
+import { Section } from 'components/Section/Section';
 import { Filter } from 'components/Filter/Filter';
 import { ContactsList } from 'components/ContactList/ContactList';
 import { ContactFrom } from 'components/ContactForm/ContactForm';
@@ -45,8 +45,8 @@ resetFrom();
     <Section title={`Contacts list`}>
         {isLoading && <p>Loading contacts...</p>}
         {error && <p>{error}</p>}
-        {contacts.length >  && <ContactsList contacts={filter} />}
+        {contacts.length > 0 && <ContactsList contacts={filter} />}
     </Section>
 </Wrap>
-        );
+);
 }
