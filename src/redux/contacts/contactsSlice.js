@@ -1,5 +1,4 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { type } from "@testing-library/user-event/dist/type";
 import { addContact, deleteContact, fetchContacts } from "./operations";
 import * as reducers from './reducers';
 
