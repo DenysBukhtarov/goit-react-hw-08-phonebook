@@ -1,43 +1,37 @@
-import { useSelector } from "react-redux";
-import { useGetContactQuery } from "redux/ContactsApi";
-import ContactListItem from "components/ContactListItem";
-import { Spinner } from "@chakra-ui/react";
+import {List, Item, Button } from './ContactList.styled';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { deleteContact} from 'redux/contacts/operations';
 
-function ContactsList() {
+
+export const  ContactsList = ({ contacts }) => {
     
-    const { data, isFetching } = useGetContactQuery();
-    const filter = useSelector(state => state.filter);
-
-    const contacts = 
-    data && data.filter(contact => contact.name.toLowerCase().includes(filter));
+ const dispatch = useDispatch();
      
     return (
-        <>
-            {data && data.lenght !== 0 && (
-                <ul>
-                    {contacts.lenght !== 0 ? (
-                    contacts.map(contact => (
-                        <ContactListItem key={contact.id} {...contact} />
-                    ))
-                    ) : (
-                        <p>No Search Contacts: {filter}</p>
-                                                        )}
-                </ul>
-            )}
-            {data && data.lenght === 0 && <p>'You don not have contacts'</p>}
-            {isFetching && (
-                <Spinner
-                    thickness="4px"
-                    speed="0.65s"
-                    emptyColor="gray.200"
-                    color="blue.500"
-                    size="xl"
-            />
-            )}
-        </>
+        <List>
+            {contacts.map(({ id, name, number }) =>{
+                return(
+<Item key={id}>
+{name}:{number}
+<Button type="button" onClick={() => dispatch(deleteContact(id))}>
+    Delete
+</Button>
+</Item>
+                );
+            })} 
+      </List>         
     );
-}
+ };
+
+ List.propTypes = {
+    contacts: PropTypes.arrayOf(
+        PropTypes.exact({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            phone: PropTypes.number.isRequired,
+        })
+    ),
+    };
 
 
-
-export default ContactsList;
