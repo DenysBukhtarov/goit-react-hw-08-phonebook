@@ -39,7 +39,7 @@ export const logIn= createAsyncThunk(
 );
 
 export const logOut= createAsyncThunk(
-    'auth/login',
+    'auth/logout',
     async (_, thunkAPI) => {
         try{
             await axios.post('/users/logout');
