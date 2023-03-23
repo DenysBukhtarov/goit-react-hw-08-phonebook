@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[266],{1266:function(e,t,n){n.r(t),n.d(t,{default:function(){return a}});var r=n(4087),c=n(184);function a(){return(0,c.jsx)(r.xu,{backgroundColor:"#004c97",padding:"20px",children:(0,c.jsx)("title",{children:"Save Contacts"})})}}}]);
+//# sourceMappingURL=266.b64080ef.chunk.js.map
